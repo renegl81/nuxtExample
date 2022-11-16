@@ -3,8 +3,8 @@
     <nav class="my-nav">
       <div class="text-center">
         <NuxtLink to="/" style="margin-right: 25px;">Home</NuxtLink>
-        <NuxtLink to="/myPage" style="margin-right: 25px;">My page</NuxtLink>
-        <NuxtLink to="/oPage">Other page</NuxtLink>
+        <NuxtLink to="/my-page" style="margin-right: 25px;">My page</NuxtLink>
+        <NuxtLink to="/o-page">Other page</NuxtLink>
       </div>
     </nav>
     <Nuxt />

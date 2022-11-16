@@ -56,8 +56,8 @@
           Welcome to your Nuxt Application
         </h2>
         <div class="text-center">
-          <NuxtLink to="/myPage" style="margin-right: 25px;">My page</NuxtLink>
-          <NuxtLink to="/oPage">Other page</NuxtLink>
+          <NuxtLink to="/my-page" style="margin-right: 25px;">My page</NuxtLink>
+          <NuxtLink to="/o-page">Other page</NuxtLink>
         </div>
         <p class="mt-3 text-gray-600">
           We recommend you take a look at the
