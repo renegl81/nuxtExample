@@ -20,6 +20,11 @@ export default {
   data: () => ({
     mountains: []
   }),
+  async fetch() {
+    this.mountains = await fetch(
+      'https://api.nuxtjs.dev/mountains'
+    ).then(res => res.json())
+  },
   head: {
     title: 'Otra pagina',
     meta: [
@@ -32,11 +37,6 @@ export default {
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
-  },
-  async fetch() {
-    this.mountains = await fetch(
-      'https://api.nuxtjs.dev/mountains'
-    ).then(res => res.json())
   }
 }
 </script>

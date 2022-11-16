@@ -1,11 +1,9 @@
 <template>
    <div class="container">
-     <h1>My page</h1>
+     <AppHeader />
      <h2 v-if="showInfo" :class="lastname.length > 0 ? 'blue' : 'red'">Showing reactivity</h2>
      <button class="btn btn-prev" @click="toggleInfo"><span v-if="showInfo">ocultar</span><span v-else>mostrar</span></button>
-     <h3>Name: {{ name }}</h3>
-     <h3>Last name: {{ lastname }}</h3>
-     <h3>Full name: {{ fullName }}</h3>
+     <UserInfo :name="name" :lastname="lastname" />
      <div class="mform">
        <label>Name</label>
        <input v-model="name" type="text"/>
@@ -14,7 +12,7 @@
        <button class="button--doc text-green"  @click="addUser">Agregar</button>
      </div>
      <ul class="list-none hover:list-disc">
-       <li v-for="user in users" :key="user.id"> {{ user.name }}  <button class="btn btn-prev" @click="removeUser(user.id)">Eliminar</button></li>
+       <li v-for="user in users" :key="user.id"> {{ user.name }}  <button class="btn btn-prev btn-red" @click="removeUser(user.id)">Eliminar</button></li>
      </ul>
 
    </div>
@@ -22,10 +20,10 @@
 
 <script>
 export default {
-  layout: 'MyDefault',
+  layout: 'MyPage',
   data: () => {
     return {
-      name: 'John',
+      name: '',
       lastname: '',
       showInfo: false,
       users: [
@@ -35,18 +33,12 @@ export default {
       ]
     }
   },
-  computed: {
-      fullName() {
-        return this.name + ' ' + this.lastname
-      }
-  },
   watch: {
      showInfo (val){
         console.log('Ha cambiado a ' + val)
     }
   },
   mounted() {
-    //  this.showInfo = true;
     setTimeout(()=>{
       this.showInfo = true
     }, 3000)
