@@ -1,13 +1,16 @@
 <template>
   <div>
-    <nav class="my-nav">
-      <div class="text-center">
-        <NuxtLink to="/" style="margin-right: 25px;">Home</NuxtLink>
-        <NuxtLink to="/my-page" style="margin-right: 25px;">My page</NuxtLink>
-        <NuxtLink to="/o-page">Other page</NuxtLink>
+    <div class="navbar bg-neutral text-neutral-content">
+      <div class="ml-5 text-center">
+        <NuxtLink to="/" class="ml-3">Inicio</NuxtLink>
+        <NuxtLink to="/my-page" class="ml-5"> Reactividad</NuxtLink>
+        <NuxtLink to="/o-page" class="ml-3">Ajax</NuxtLink>
       </div>
-    </nav>
-    <Nuxt />
+    </div>
+    <div class="container">
+      <Nuxt />
+    </div>
+
   </div>
 </template>
 

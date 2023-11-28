@@ -1,13 +1,14 @@
 <template>
-  <div class="container">
-    <p v-if="$fetchState.pending">Fetching mountains...</p>
-    <p v-else-if="$fetchState.error">An error occurred :(</p>
+  <div>
+    <p v-if="$fetchState.pending">Cargando...</p>
+    <p v-else-if="$fetchState.error">Ha ocurrido un error :(</p>
     <div v-else>
-      <h1>Nuxt Mountains</h1>
-      <ul>
-        <li v-for="mountain of mountains" :key="mountain.title">{{ mountain.title }}</li>
+      <h1 class="card-title">Universidades</h1>
+      <ul class="pl-5">
+        <li v-for="mountain of mountains" :key="mountain.title" class="mb-2">
+          <nuxt-link :to="{ name: 'mountain-slug', params: { slug: mountain.domains[0] }}">{{ mountain.name }}</nuxt-link></li>
       </ul>
-      <button class="button--doc text-green" @click="$fetch">Refresh</button>
+      <button class="btn btn-accent btn-md mt-3" @click="$fetch">Recargar</button>
     </div>
   </div>
 </template>
@@ -22,7 +23,7 @@ export default {
   }),
   async fetch() {
     this.mountains = await fetch(
-      'https://api.nuxtjs.dev/mountains'
+      'http://universities.hipolabs.com/search?country=Spain'
     ).then(res => res.json())
   },
   head: {

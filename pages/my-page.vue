@@ -1,30 +1,63 @@
 <template>
    <div class="container">
-     <AppHeader />
-     <h2 v-if="showInfo" :class="lastname.length > 0 ? 'blue' : 'red'">Showing reactivity</h2>
-     <button class="btn btn-prev" @click="toggleInfo"><span v-if="showInfo">ocultar</span><span v-else>mostrar</span></button>
+     <AppHeader v-if="showInfo" title="Listado de usuarios" />
+     <button class="btn btn-sm" :class="showInfo ? 'btn-error' : 'btn-accent'" @click="toggleInfo">
+       <span v-if="showInfo">ocultar</span>
+       <span v-else>mostrar</span>
+     </button>
      <UserInfo :name="name" :lastname="lastname" />
-     <div class="mform">
-       <label>Name</label>
-       <input v-model="name" type="text"/>
-       <label>Lastname</label>
-       <input v-model="lastname" type="text"/>
-       <button class="button--doc text-green"  @click="addUser">Agregar</button>
-     </div>
-     <ul class="list-none hover:list-disc">
-       <li v-for="user in users" :key="user.id"> {{ user.name }}  <button class="btn btn-prev btn-red" @click="removeUser(user.id)">Eliminar</button></li>
-     </ul>
+     <div class="divider"></div>
+
+         <div class="">
+            <div class="">
+              <div class="card w-96 bg-neutral text-neutral-content mt-3">
+                <div class="card-body">
+              <div class="mt-2">
+                <h2 class="card-title">Entrar Usuario</h2>
+                <label class="w-full">Nombre</label>
+                <input v-model="name" class="input input-bordered input-neutral text-neutral w-full mb-2" type="text"/>
+                <label class="w-full">Apellido</label>
+                <input v-model="lastname" class="input input-bordered input-neutral text-neutral w-full" type="text"/>
+                <button class="btn btn-primary mt-2 btn-sm"  @click="addUser">Agregar</button>
+              </div>
+                </div>
+              </div>
+            </div>
+           <div class="mt-3">
+             <div class="card w-96 bg-neutral text-neutral-content mt-3">
+               <div class="card-body">
+             <ul class="list-none hover:list-disc">
+               <li v-for="user in users" :key="user.id" class="flex justify-between mb-2">
+                 {{ user.name }}
+                 <button class="btn btn-error btn-sm" @click="removeUser(user.id)">
+                   Eliminar
+                 </button>
+               </li>
+             </ul>
+               </div>
+             </div>
+           </div>
+         </div>
+
+
+
+
+
 
    </div>
 </template>
 
 <script>
+import UserInfo from "~/components/UserInfo.vue";
+import AppHeader from "~/components/AppHeader.vue";
+
 export default {
+  components: {AppHeader, UserInfo},
   data: () => {
     return {
       name: '',
       lastname: '',
-      showInfo: false,
+      showInfo: true,
       users: [
         {id: 1, name: 'Juan'},
         {id: 2, name: 'Pedro'},
